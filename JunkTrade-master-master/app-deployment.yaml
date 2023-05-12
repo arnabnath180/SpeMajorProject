@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: junktradebackend-deployment
+  labels:
+    app: junktradebackend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: junktradebackend
+  template:
+    metadata:
+      labels:
+        app: junktradebackend
+    spec:
+      containers:
+        - name: junktradebackend
+          image: arnabxyz/junktradebackend:1.0
+          ports:
+            - containerPort: 8001
+          volumeMounts:
+            - mountPath: /logs
+              name: logs
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-root-password
+            - name: MYSQL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-username
+            - name: MYSQL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: database-url
+            - name: MYSQL_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: dbName
+      volumes:
+        - name: logs
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: junktradebackend-service
+spec:
+  selector:
+    app: junktradebackend
+  ports:
+    - protocol: TCP
+      port: 8001
+      targetPort: 8001
+      nodePort: 32000
+  type: NodePort
+

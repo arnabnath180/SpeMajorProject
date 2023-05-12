@@ -1,0 +1,25 @@
+.logo{
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
+  .date-picker-container {
+    width: 100%;
+  }
+
+  .date-picker {
+    width: 100%;
+  }
+
+  .proceed{
+    margin-top: 10px;
+  }
+
+  .dashboard-container{
+    background-image: radial-gradient(rgb(243, 254, 246), rgb(231, 250, 231), rgb(175, 249, 213));
+  }
+
+  .seller-label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }

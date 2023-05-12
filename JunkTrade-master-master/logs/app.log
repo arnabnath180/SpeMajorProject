@@ -1,0 +1,24 @@
+Fri, 12 May 2023 12:53:33 GMT GET /seller/getScrapItemList/1 200 - 0.011 ms order with scrapId = 1fetched successfully
+Fri, 12 May 2023 12:53:33 GMT GET /seller/getScrapItemList/1 200 - 0.0 ms order with scrapId = 1fetched successfully
+Fri, 12 May 2023 12:53:33 GMT GET /seller/my_orders 200 - 0.001 ms order fetched successfully
+Fri, 12 May 2023 12:53:33 GMT DELETE /seller/deleteScrapList/1 200 - 0.001 ms order with scrapId = 1deleted successfully
+Fri, 12 May 2023 12:53:33 GMT POST /seller/add_orders 200 - 0.0 ms order placed successfully
+Fri, 12 May 2023 12:53:33 GMT POST /seller/register_seller 200 - 0.0 ms user registration api
+Fri, 12 May 2023 12:53:33 GMT GET /seller/my_orders 200 - 0.0 ms order fetched successfully
+Fri, 12 May 2023 12:53:33 GMT GET /admin/getScrapList 200 - 0.0 ms ScrapList fetched successfully
+Fri, 12 May 2023 12:53:33 GMT GET /admin/getScrapItemList/1 200 - 0.001 ms ScrapItemList with scrapId = 1 fetched successfully
+Fri, 12 May 2023 12:53:33 GMT GET /admin/getScrapItemList/1 200 - 0.0 ms ScrapItemList with scrapId = 1 fetched successfully
+Fri, 12 May 2023 12:53:33 GMT DELETE /admin/deleteScrapList/1 200 - 0.0 ms ScrapList with scrapId = 1 deleted successfully
+Fri, 12 May 2023 12:53:33 GMT GET /admin/getScrapList 200 - 0.0 ms ScrapList fetched successfully
+Fri, 12 May 2023 16:51:49 GMT GET /seller/getScrapItemList/1 200 - 0.013 ms order with scrapId = 1fetched successfully
+Fri, 12 May 2023 16:51:49 GMT GET /seller/getScrapItemList/1 200 - 0.0 ms order with scrapId = 1fetched successfully
+Fri, 12 May 2023 16:51:49 GMT GET /seller/my_orders 200 - 0.0 ms order fetched successfully
+Fri, 12 May 2023 16:51:49 GMT DELETE /seller/deleteScrapList/1 200 - 0.0 ms order with scrapId = 1deleted successfully
+Fri, 12 May 2023 16:51:49 GMT POST /seller/add_orders 200 - 0.001 ms order placed successfully
+Fri, 12 May 2023 16:51:49 GMT POST /seller/register_seller 200 - 0.0 ms user registration api
+Fri, 12 May 2023 16:51:49 GMT GET /seller/my_orders 200 - 0.001 ms order fetched successfully
+Fri, 12 May 2023 16:51:49 GMT GET /admin/getScrapList 200 - 0.0 ms ScrapList fetched successfully
+Fri, 12 May 2023 16:51:49 GMT GET /admin/getScrapItemList/1 200 - 0.001 ms ScrapItemList with scrapId = 1 fetched successfully
+Fri, 12 May 2023 16:51:49 GMT GET /admin/getScrapItemList/1 200 - 0.001 ms ScrapItemList with scrapId = 1 fetched successfully
+Fri, 12 May 2023 16:51:49 GMT DELETE /admin/deleteScrapList/1 200 - 0.0 ms ScrapList with scrapId = 1 deleted successfully
+Fri, 12 May 2023 16:51:49 GMT GET /admin/getScrapList 200 - 0.0 ms ScrapList fetched successfully

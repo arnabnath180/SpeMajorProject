@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: junktradefrontend-deployment
+  labels:
+    app: junktradefrontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: junktradefrontend
+  template:
+    metadata:
+      labels:
+        app: junktradefrontend
+    spec:
+      containers:
+        - name: junktradefrontend
+          image: arnabxyz/junktradefrontend:1.0
+          ports:
+            - containerPort: 3000
+---          
+apiVersion: v1
+kind: Service
+metadata:
+  name: junktradefrontend-service
+spec:
+  selector:
+    app: junktradefrontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 31000
+  type: LoadBalancer
+

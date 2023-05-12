@@ -1,0 +1,7 @@
+---
+- name: Deploy Frontend
+  hosts: all
+  tasks:
+    - name: apply deployment
+      shell: kubectl apply -f /home/arnab/junktradefrontend/deployment.yaml
+    

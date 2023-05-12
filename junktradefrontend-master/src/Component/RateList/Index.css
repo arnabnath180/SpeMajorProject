@@ -1,0 +1,9 @@
+.logo{
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
+  .ratelist-container{
+    background-image: radial-gradient(rgb(243, 254, 246), rgb(231, 250, 231), rgb(175, 249, 213));
+    height: 100vh;
+  }

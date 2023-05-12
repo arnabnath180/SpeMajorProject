@@ -11,8 +11,8 @@
     - name: apply app
       shell: kubectl apply -f /home/arnab/SpeMajorProject/JunkTrade-master-master/app-deployment.yaml
 - name: Deploy Frontend
-hosts: all
-tasks:
+  hosts: all
+  tasks:
     - name: apply deployment
       shell: kubectl apply -f /home/arnab/SpeMajorProject/junktradefrontend-master/deployment.yaml
     

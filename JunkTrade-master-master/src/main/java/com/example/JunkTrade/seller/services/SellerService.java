@@ -49,6 +49,11 @@ public class SellerService {
         if(seller == null) {
             throw new RuntimeException("Seller not found");
         }
+        String realPass = seller.getPassword();
+        String reqPass = request.getPassword();
+        if(!realPass.equals(reqPass)){
+            throw new RuntimeException("Invalid Password");
+        }
         String token = jwtService.createSellerJwt(seller.getEmail(), seller.getRoles());
         SellerLoginResponseDTO response = new SellerLoginResponseDTO();
         response.setSellertoken(token);

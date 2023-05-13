@@ -41,7 +41,7 @@ public class SellerController {
                                                                 @RequestBody LoginSellerDTO request)
     {   long startTime = System.currentTimeMillis();
         SellerLoginResponseDTO verifiedSeller = sellerService.verifySeller(request);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "POST";
         String uriPath = req.getRequestURI();
@@ -51,8 +51,8 @@ public class SellerController {
         long endTime = System.currentTimeMillis();
         // Calculate the response time
         double responseTime = (endTime - startTime) / 1000.0;
-
-        logger.info("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return ResponseEntity.ok().body(verifiedSeller);
     }
 
@@ -61,7 +61,7 @@ public class SellerController {
         long startTime = System.currentTimeMillis();
         sellerService.addSeller(sellerRegistrationDTO);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "POST";
         String uriPath = req.getRequestURI();
@@ -73,13 +73,14 @@ public class SellerController {
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
 
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
     }
     @PostMapping("/add_orders")
     public Long addOrders(HttpServletRequest req, @RequestBody OrderRequestDTO orderRequestDTO,@AuthenticationPrincipal Seller seller){
         long startTime = System.currentTimeMillis();
         Long ans = sellerService.addOrders(orderRequestDTO,seller);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "POST";
         String uriPath = req.getRequestURI();
@@ -91,7 +92,8 @@ public class SellerController {
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
 
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return ans;
     }
 /*
@@ -106,7 +108,7 @@ public class SellerController {
     public List<MyOrdersDTO> myOrders(HttpServletRequest req, @AuthenticationPrincipal Seller seller){
         long startTime = System.currentTimeMillis();
         List<MyOrdersDTO> myOrdersDTOS = sellerService.myOrders(seller);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "GET";
         String uriPath = req.getRequestURI();
@@ -117,8 +119,8 @@ public class SellerController {
         // Calculate the response time
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
-
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return myOrdersDTOS;
     }
 
@@ -126,7 +128,7 @@ public class SellerController {
     public List<SellerItemResponseDTO> getScrapItemList(HttpServletRequest req, @PathVariable Long scrapId){
         long startTime = System.currentTimeMillis();
         List<SellerItemResponseDTO> itemResponseDTOS = sellerService.getScrapItemList(scrapId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "GET";
         String uriPath = req.getRequestURI();
@@ -138,7 +140,8 @@ public class SellerController {
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
 
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return itemResponseDTOS;
     }
 
@@ -146,7 +149,7 @@ public class SellerController {
     public String deleteScrapFromList(@PathVariable Long scrapId, HttpServletRequest req){
         long startTime = System.currentTimeMillis();
         String result = sellerService.deleteScrapFromList(scrapId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM -dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "DELETE";
         String uriPath = req.getRequestURI();
@@ -158,7 +161,8 @@ public class SellerController {
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
 
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return result;
 
     }

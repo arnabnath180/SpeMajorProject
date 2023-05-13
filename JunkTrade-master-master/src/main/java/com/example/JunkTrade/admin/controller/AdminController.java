@@ -33,7 +33,7 @@ public class AdminController {
             @RequestBody LoginAdminDTO request, HttpServletRequest req)
     {   long startTime = System.currentTimeMillis();
         LoginResponseDTO verifiedAdmin = adminService.verifyAdmin(request);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "POST";
         String uriPath = req.getRequestURI();
@@ -44,9 +44,8 @@ public class AdminController {
         // Calculate the response time
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
-
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
-
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return ResponseEntity.ok().body(verifiedAdmin);
     }
 
@@ -54,7 +53,7 @@ public class AdminController {
     public String deleteScrapFromList(@PathVariable Long scrapId, HttpServletRequest req) {
         long startTime = System.currentTimeMillis();
         String result = adminService.deleteScrapFromList(scrapId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "DELETE";
         String uriPath = req.getRequestURI();
@@ -65,8 +64,8 @@ public class AdminController {
         // Calculate the response time
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
-
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return result;
     }
 
@@ -75,7 +74,7 @@ public class AdminController {
     {
         long startTime = System.currentTimeMillis();
         List<AdminResponseDTO> adminResponseDTOS = adminService.getScrapList();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "GET";
         String uriPath = req.getRequestURI();
@@ -86,8 +85,8 @@ public class AdminController {
         // Calculate the response time
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
-
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return adminResponseDTOS;
     }
 
@@ -95,7 +94,7 @@ public class AdminController {
     public List<AdminItemResponseDTO> getScrapItemList(@PathVariable Long scrapId, HttpServletRequest req){
         long startTime = System.currentTimeMillis();
         List<AdminItemResponseDTO> adminItemResponseDTOS = adminService.getScrapItemList(scrapId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = LocalDateTime.now().format(formatter);
         String httpRequestMethod = "GET";
         String uriPath = req.getRequestURI();
@@ -106,8 +105,8 @@ public class AdminController {
         // Calculate the response time
         long endTime = System.currentTimeMillis();
         double responseTime = (endTime - startTime) / 1000.0;
-
-        logger.trace("{} GMT {} {} {} - {} ms {}", timestamp, httpRequestMethod, uriPath, httpStatus, responseTime, requestData);
+        String message = "\"" + timestamp + "\","+httpRequestMethod+",\""+uriPath+"\","+httpStatus+","+responseTime+","+"\""+requestData+"\"";
+        logger.trace(message);
         return adminItemResponseDTOS;
     }
 

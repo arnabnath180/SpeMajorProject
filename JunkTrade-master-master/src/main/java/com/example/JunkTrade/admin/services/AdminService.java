@@ -50,6 +50,11 @@ public class AdminService {
         if(admin == null) {
             throw new RuntimeException("Admin not found");
         }
+        String realPass = admin.getPassword();
+        String reqPass = request.getPassword();
+        if(!realPass.equals(reqPass)){
+            throw new RuntimeException("Invalid Password");
+        }
         String token = jwtService.createAdminJwt(admin.getEmail(), admin.getRoles());
         LoginResponseDTO response = new LoginResponseDTO();
         response.setAdmintoken(token);

@@ -76,7 +76,7 @@ public class SellerService {
         scrapListings.setSeller(seller);
         scrapListings.setDistrict(orderRequestDTO.getDistrict());
         scrapListings.setScrapCategory(orderRequestDTO.getScrapCategory());
-        java.sql.Time t=new java.sql.Time(orderRequestDTO.getPickupTime() *1000-(5*3600+30*60)*1000);
+        java.sql.Time t=new java.sql.Time(orderRequestDTO.getPickupTime() *1000);
         scrapListings.setPickupTime(t);
         scrapListings.setPickupDate(orderRequestDTO.getPickupDate());
       //  scrapListings.setPrice(orderRequestDTO.getPrice());
